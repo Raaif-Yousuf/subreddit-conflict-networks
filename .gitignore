@@ -1,0 +1,68 @@
+# --- Course materials (local reference only) ---
+/*.pdf
+/*.docx
+/*.pptx
+
+# --- Data (download/regenerate with scripts) ---
+data/raw/
+data/processed/
+*.tsv
+*.parquet
+*.pkl
+*.pickle
+*.gpickle
+*.npy
+*.npz
+*.zip
+*.gz
+
+# --- Model outputs / checkpoints ---
+models/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+runs/
+wandb/
+lightning_logs/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- LaTeX build files (keep .tex/.bib and final PDF in paper/) ---
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/*.synctex.gz
+paper/*.fls
+paper/*.fdb_latexmk
+
+# --- Secrets / local config ---
+.env
+.env.*
+*.key
+.claude/
+CLAUDE.local.md
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
