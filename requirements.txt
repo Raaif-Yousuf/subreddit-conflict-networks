@@ -1,0 +1,9 @@
+pandas
+pyarrow
+networkx
+numpy
+scipy
+scikit-learn
+matplotlib
+python-igraph
+leidenalg

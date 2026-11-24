@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Project Proposal &amp; Update — Conflict Between Reddit Communities</title>
+<style>
+  @page { size: letter; margin: 0.6in 0.65in; }
+  body { font-family: "Times New Roman", Times, serif; font-size: 10.5pt; line-height: 1.28; color: #000; margin: 0; }
+  h1 { font-size: 14pt; text-align: center; margin: 0 0 2pt; }
+  .sub { text-align: center; font-size: 10pt; margin-bottom: 8pt; }
+  h2 { font-size: 11pt; margin: 8pt 0 3pt; border-bottom: 0.5pt solid #888; }
+  p { margin: 0 0 4pt; text-align: justify; }
+  ul { margin: 0 0 4pt; padding-left: 16pt; }
+  li { margin-bottom: 1.5pt; text-align: justify; }
+  table { border-collapse: collapse; font-size: 9pt; margin: 2pt auto 3pt; }
+  th, td { border-top: 0.5pt solid #999; border-bottom: 0.5pt solid #999; padding: 1.5pt 5pt; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { border-top: 1pt solid #000; border-bottom: 1pt solid #000; }
+  caption { caption-side: top; font-size: 9pt; font-style: italic; margin-bottom: 2pt; }
+  .figs { display: flex; gap: 10pt; justify-content: center; align-items: flex-end; margin: 4pt 0; }
+  .figs figure { margin: 0; text-align: center; }
+  figcaption { font-size: 8.5pt; font-style: italic; }
+  .row { display: flex; gap: 12pt; align-items: flex-start; }
+  .row > div { flex: 1; }
+  b.hl { font-weight: bold; }
+  .small { font-size: 9pt; }
+  .disclosure { margin-top: 8pt; font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<h1>Who Attacks Whom? Community Structure and Conflict Between Reddit Communities</h1>
+<div class="sub">CS 4352 Social Network Analysis — Project Proposal &amp; Update · Raaif Yousuf, Raymond Liu · November 24, 2026</div>
+
+<h2>1. Overview and Project Changes</h2>
+<p>The project topic list was shared after the original proposal deadline, so, as Dr. Derr allowed, this document merges the proposal and the project update. We build on the seed idea <i>Community Detection and Polarization</i> (project type A) and add a link-prediction component. We study a signed, directed, time-stamped network of interactions between Reddit communities. Our questions are whether the communities we detect line up with conflict, who attacks whom, how conflict changes over time, and whether future hostile interactions can be predicted.</p>
+
+<h2>2. Dataset</h2>
+<p>We use the public Stanford SNAP <b>Reddit Hyperlink Network</b> (Kumar et al., WWW 2018). A directed edge <i>A</i>&rarr;<i>B</i> means a post in subreddit <i>A</i> linked to a post in subreddit <i>B</i>. Each edge has a timestamp and a sentiment label: <b>negative</b> if the linking post is hostile or critical toward the target, positive otherwise. We merged the post-body and post-title files and removed self-links and duplicates. This leaves <b>858,488 links among 67,180 subreddits</b> (Jan 2014 – Apr 2017), of which <b>9.58% are negative</b>. For community detection and modeling we use a <i>core</i> graph of the 7,854 subreddits with &ge;20 links. The core graph keeps 79% of all links.</p>
+
+<table>
+<caption>Table 1. Network statistics (pairs = distinct directed subreddit pairs).</caption>
+<thead><tr><th></th><th>Subreddits</th><th>Links</th><th>Pairs</th><th>% neg.</th><th>Reciprocity</th><th>Neg. pairs answered negatively</th><th>Avg. clustering</th></tr></thead>
+<tbody>
+<tr><td>Full</td><td>67,180</td><td>858,488</td><td>339,643</td><td>9.58</td><td>0.177</td><td>6.7%</td><td>—</td></tr>
+<tr><td>Core (&ge;20 links)</td><td>7,854</td><td>678,593</td><td>207,739</td><td>10.84</td><td>0.208</td><td>8.1%</td><td>0.403</td></tr>
+</tbody></table>
+
+<h2>3. Research Questions and Methods</h2>
+<ul>
+<li><b>RQ1 (structure):</b> Do detected communities line up with conflict? <i>Methods:</i> Leiden (main), Louvain and spectral clustering on the positive graph. We measure where negative links fall (within or between communities) against a sign-shuffle null model, and build a community-to-community hostility matrix.</li>
+<li><b>RQ2 (roles):</b> Who attacks and who is targeted? <i>Methods:</i> degree, PageRank and betweenness, negative in/out ratios, reciprocity of negative links, and structural-balance triad census.</li>
+<li><b>RQ3 (time):</b> Does conflict escalate or persist? <i>Methods:</i> quarterly snapshots, community matching across quarters, and hostility between community pairs over time.</li>
+<li><b>RQ4 (prediction):</b> Can we predict <i>new</i> negative links in a future time window? <i>Methods:</i> heuristic baselines (common neighbors, Jaccard, Adamic-Adar, preferential attachment), a feature-based classifier, node2vec embeddings, and GNN link predictors (GraphSAGE/GCN, optionally a signed GNN), all evaluated on a temporal split.</li>
+</ul>
+
+<h2>4. Preliminary Results</h2>
+<div class="figs">
+  <figure><img src="../figures/prelim_activity.png" style="height:1.75in"><figcaption>Fig. 1. Link volume more than doubles, but the negative share stays at 9–10%.</figcaption></figure>
+  <figure><img src="../figures/prelim_hostility.png" style="height:1.75in"><figcaption>Fig. 2. % of links that are negative between the 10 largest Leiden communities.</figcaption></figure>
+</div>
+
+<p><b>Conflict is concentrated in a few attackers and aimed at large targets.</b> The 10 top negative senders are mostly "meta" communities that discuss other subreddits (r/subredditdrama, r/bestof, r/drama, r/circlebroke2, r/shitredditsays). r/subredditdrama alone sends 8,987 negative links, about 11% of all negative links. The most-targeted subreddits are large general ones (r/askreddit, r/worldnews, r/news, r/pics). Retaliation is rare: only 6.7% of attacked pairs are ever attacked back by the target.</p>
+
+<p><b>RQ1: Negative links disproportionately cross community boundaries.</b> Leiden finds 47 communities (modularity 0.498). Louvain gives similar results (43 communities, Q = 0.493). Table 2 shows that 62.3% of positive links stay inside a community, but only 53.1% of negative links do. That is far below the 61.3% expected if signs were randomly reassigned (null std 0.16 points). Equivalently, a link between communities is 40% more likely to be negative (13.1% vs. 9.4%). The hostility matrix (Fig. 2) shows one source of conflict: community C1 (r/subredditdrama, r/worldnews, r/news). Between 15% and 29% of its links to every other large community are negative, peaking at 28.6% toward the gaming community (C2: r/gaming, r/leagueoflegends, r/pcmasterrace).</p>
+
+<div class="row">
+<div>
+<table>
+<caption>Table 2. Communities on the positive core graph.</caption>
+<thead><tr><th></th><th>Leiden</th><th>Louvain</th></tr></thead>
+<tbody>
+<tr><td>Modularity Q</td><td>0.498</td><td>0.493</td></tr>
+<tr><td># communities (&ge;50 nodes)</td><td>47 (25)</td><td>43 (26)</td></tr>
+<tr><td>% pos. links within comm.</td><td>62.3</td><td>63.2</td></tr>
+<tr><td>% neg. links within comm.</td><td><b>53.1</b></td><td><b>54.8</b></td></tr>
+<tr><td>&nbsp;&nbsp;sign-shuffle null (mean)</td><td>61.3</td><td>62.3</td></tr>
+<tr><td>Neg. rate within / between</td><td>9.4 / 13.1</td><td>9.5 / 13.0</td></tr>
+</tbody></table>
+</div>
+<div>
+<table>
+<caption>Table 3. RQ4 test ROC-AUC, predicting new negative links (Oct 2016 – Apr 2017).</caption>
+<thead><tr><th>Method</th><th>Random neg.</th><th>Hard neg.</th></tr></thead>
+<tbody>
+<tr><td>Common Neighbors</td><td>0.947</td><td>0.558</td></tr>
+<tr><td>Jaccard</td><td>0.863</td><td>0.507</td></tr>
+<tr><td>Adamic-Adar</td><td>0.954</td><td>0.548</td></tr>
+<tr><td>Preferential Attachment</td><td>0.929</td><td>0.566</td></tr>
+<tr><td>Attacker &times; Target activity</td><td>0.877</td><td>0.634</td></tr>
+<tr><td>Logistic Regression (all)</td><td><b>0.958</b></td><td><b>0.656</b></td></tr>
+</tbody></table>
+</div>
+</div>
+
+<p><b>RQ4: Baseline link prediction.</b> We train on the graph before Jul 2016 (labels: Jul–Sep 2016). We test on the graph before Oct 2016, with labels from Oct 2016 – Apr 2017: 5,537 new negative pairs among 7,641 active core subreddits. Each new negative pair is matched 1:1 with a non-link: a random pair ("random") or a pair that interacted only <i>positively</i> in the same window ("hard"). Classic heuristics easily tell interacting from non-interacting pairs (AUC &asymp; 0.95). They are near chance at telling <i>hostile</i> from <i>friendly</i> interactions (AUC 0.51–0.57). A simple attacker &times; target activity score (0.634) and a logistic regression on all features (0.656) do better. The hard setting is therefore our main benchmark for the embedding and GNN models. Average precision follows the same pattern (0.959 random / 0.638 hard for logistic regression).</p>
+
+<h2>5. Next Steps and Updated Timeline</h2>
+<ul class="small">
+<li><b>Nov 25 – 28:</b> Finalize the shared data pipeline (done for core data). Start the paper in the AAAI template (introduction, related work, data).</li>
+<li><b>Nov 29 – Dec 2:</b> RQ1: spectral clustering and signed-modularity comparison, null-model tests. RQ2: centrality of attackers vs. targets, triad balance. RQ4: node2vec link predictor.</li>
+<li><b>Dec 3 – 6:</b> RQ3: quarterly community tracking and hostility over time. RQ4: GraphSAGE/GCN link predictor and ablations (with/without negative edges, with/without community features). Draft methods and results sections; first version of the slides.</li>
+<li><b>Dec 7:</b> Freeze results; full paper draft; rehearsal. <b>Week 15:</b> Final presentation and paper/code submission.</li>
+</ul>
+<p class="small">Code and results: github.com/Raaif-Yousuf/subreddit-conflict-networks</p>
+
+<p class="disclosure"><b>AI disclosure:</b> AI was used for this assignment.</p>
+
+</body>
+</html>

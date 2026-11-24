@@ -1,0 +1,10 @@
+,full,core
+nodes,67180.0,7854.0
+links (posts),858488.0,678593.0
+distinct directed pairs,339643.0,207739.0
+% negative links,9.58,10.84
+density,7.525738678606207e-05,0.003368150913862182
+reciprocity,0.177,0.208
+avg clustering (undirected),,0.403
+largest WCC share,0.977,1.0
+neg pairs reciprocated (neg),0.067,0.081

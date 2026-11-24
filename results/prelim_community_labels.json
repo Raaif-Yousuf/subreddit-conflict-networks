@@ -1,0 +1,22 @@
+{
+ "C0": "askreddit, bestof, todayilearned",
+ "C1": "subredditdrama, worldnews, news",
+ "C2": "gaming, leagueoflegends, pcmasterrace",
+ "C3": "android, buildapc, techsupport",
+ "C4": "iama, movies, television",
+ "C5": "science, askscience, drugs",
+ "C6": "legaladvice, relationships, thebluepill",
+ "C7": "atheism, badphilosophy, askhistorians",
+ "C8": "music, hiphopheads, hiphopcirclejerk",
+ "C9": "writingprompts, anime, nosleep",
+ "C0_size": 1237,
+ "C1_size": 1027,
+ "C2_size": 955,
+ "C3_size": 559,
+ "C4_size": 395,
+ "C5_size": 383,
+ "C6_size": 345,
+ "C7_size": 260,
+ "C8_size": 246,
+ "C9_size": 243
+}
