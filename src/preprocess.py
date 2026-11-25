@@ -6,7 +6,14 @@ Outputs: data/processed/edges.parquet      one row per hyperlink
          data/processed/core_nodes.txt     analysis subset (>= MIN_LINKS total links)
          data/processed/snapshots/YYYYQn.parquet  quarterly edge lists
 
-Run: python src/preprocess.py
+Cleaning: body + title files are merged, timestamps parsed, self-links dropped, and a
+(src, dst, post_id) triple that appears in both files is kept once.
+
+Core threshold: MIN_LINKS = 20 total links (sent + received) gives 7,859 core subreddits
+(7,854 of them link to another core node, so the core graph has 7,854 nodes),
+inside the 5-10k target from PROJECT_PLAN.md so Leiden and GNNs stay laptop-sized.
+
+Run: python src/download.py && python src/preprocess.py
 """
 from pathlib import Path
 
@@ -16,6 +23,8 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw"
 OUT = ROOT / "data" / "processed"
 MIN_LINKS = 20  # a subreddit is "core" if it sends + receives at least this many links
+EDGE_COLUMNS = ["src", "dst", "ts", "sign", "source_file", "post_id"]
+NODE_COLUMNS = ["subreddit", "n_out", "n_in", "n_neg_out", "n_neg_in", "first_ts", "last_ts"]
 
 
 def load_raw() -> pd.DataFrame:
@@ -42,7 +51,7 @@ def load_raw() -> pd.DataFrame:
     df["sign"] = df["sign"].astype("int8")
     df = df[df["src"] != df["dst"]]  # drop self-links
     df = df.drop_duplicates(subset=["src", "dst", "post_id"])  # same post in body+title counts once
-    return df.sort_values("ts").reset_index(drop=True)
+    return df.sort_values("ts").reset_index(drop=True)[EDGE_COLUMNS]
 
 
 def node_stats(edges: pd.DataFrame) -> pd.DataFrame:
@@ -59,15 +68,27 @@ def node_stats(edges: pd.DataFrame) -> pd.DataFrame:
     out["first_ts"] = first.groupby("n")["ts"].min()
     out["last_ts"] = first.groupby("n")["ts"].max()
     out.index.name = "subreddit"
-    return out.reset_index()
+    return out.reset_index()[NODE_COLUMNS]
+
+
+def validate(edges: pd.DataFrame, nodes: pd.DataFrame) -> None:
+    """Fail loudly if the outputs drift from the data contract other parts rely on."""
+    assert list(edges.columns) == EDGE_COLUMNS, edges.columns
+    assert list(nodes.columns) == NODE_COLUMNS, nodes.columns
+    assert pd.api.types.is_datetime64_any_dtype(edges["ts"])
+    assert set(edges["sign"].unique()) <= {-1, 1}
+    assert set(edges["source_file"].unique()) <= {"body", "title"}
+    assert not (edges["src"] == edges["dst"]).any(), "self-links present"
+    assert not edges.duplicated(["src", "dst", "post_id"]).any(), "duplicate links present"
+    assert edges["ts"].is_monotonic_increasing
 
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     edges = load_raw()
-    edges.to_parquet(OUT / "edges.parquet", index=False)
-
     nodes = node_stats(edges)
+    validate(edges, nodes)
+    edges.to_parquet(OUT / "edges.parquet", index=False)
     nodes.to_parquet(OUT / "nodes.parquet", index=False)
 
     core = nodes.loc[(nodes["n_out"] + nodes["n_in"]) >= MIN_LINKS, "subreddit"].sort_values()

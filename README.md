@@ -9,10 +9,9 @@ uv pip install -r requirements.txt
 ```
 
 ## Data
-Download the two TSVs from https://snap.stanford.edu/data/soc-RedditHyperlinks.html into `data/raw/`:
+Download the two SNAP TSVs (~650 MB total) from https://snap.stanford.edu/data/soc-RedditHyperlinks.html into `data/raw/`:
 ```bash
-curl -o data/raw/soc-redditHyperlinks-body.tsv  https://snap.stanford.edu/data/soc-redditHyperlinks-body.tsv
-curl -o data/raw/soc-redditHyperlinks-title.tsv https://snap.stanford.edu/data/soc-redditHyperlinks-title.tsv
+python src/download.py
 ```
 
 ## Run (from `src/`)
@@ -22,7 +21,9 @@ curl -o data/raw/soc-redditHyperlinks-title.tsv https://snap.stanford.edu/data/s
 | 2. Descriptive + communities | `python prelim_analysis.py` | `results/prelim_*.csv`, `figures/prelim_*` |
 | 3. Link-prediction baselines | `python baselines.py` | `results/prelim_baselines.csv` |
 
-`src/load.py` has the shared loaders (`load_edges`, `load_graph`, `load_core_nodes`, `aggregate`).
+`src/load.py` has the shared loaders: `load_edges`, `load_graph` (date range or `window="2016Q3"`), `load_snapshot`, `list_snapshots`, `load_core_nodes`, `aggregate`, and `to_undirected_signed` (one sign per pair, for triads and community detection).
+
+Check the data contract with `python -m pytest tests` from the repo root.
 
 ## Reports
 - `report/project_update.pdf`: merged Proposal + Project Update (11/24)
