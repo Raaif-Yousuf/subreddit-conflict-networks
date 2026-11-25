@@ -20,6 +20,8 @@ python src/download.py
 | 1. Build data contract | `python preprocess.py` | `data/processed/` (edges, nodes, core_nodes, quarterly snapshots) |
 | 2. Descriptive + communities | `python prelim_analysis.py` | `results/prelim_*.csv`, `figures/prelim_*` |
 | 3. Link-prediction baselines | `python baselines.py` | `results/prelim_baselines.csv` |
+| 4. Part 1 descriptive stats (#8) | `python part1_descriptive.py` | `results/part1_descriptive.csv` |
+| 5. Part 1 roles, RQ2 (#9) | `python part1_roles.py` | `results/part1_node_roles.csv`, `results/part1_roles_tests.csv`, `figures/part1_roles.*` |
 
 `src/load.py` has the shared loaders: `load_edges`, `load_graph` (date range or `window="2016Q3"`), `load_snapshot`, `list_snapshots`, `load_core_nodes`, `aggregate`, and `to_undirected_signed` (one sign per pair, for triads and community detection).
 
