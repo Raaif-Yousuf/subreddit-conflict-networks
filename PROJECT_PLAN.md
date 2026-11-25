@@ -4,8 +4,8 @@
 
 | Deliverable | Weight (of project) | Due | Requirement |
 |---|---|---|---|
-| Proposal | 10% | 11/5 (topic list arrived late; Dr. Derr said a merged Proposal + Update is fine) | 1 page: overview, dataset, methods, weekly timeline |
-| **Project Update** | 10% | **Tue 11/24, 11:59 PM** (Brightspace) | 1–2 pages: progress, **preliminary results**, changes, updated timeline. Submit as merged Proposal + Update. |
+| Proposal | 10% | 11/5 — **done**: submitted as the merged Proposal + Update, which Dr. Derr approved by email | 1 page: overview, dataset, methods, weekly timeline |
+| **Project Update** | 10% | Tue 11/24, 11:59 PM (Brightspace) — **done** | 1–2 pages: progress, **preliminary results**, changes, updated timeline. Submit as merged Proposal + Update. |
 | Project Paper | 40% | TBD, est. Week 15 (~12/8–12/10) | AAAI template, 4–10 pages (aim 6–8), references don't count |
 | Presentation | 33% | Week 15 (overflow: final exam slot) | ~12 min + ~2 min Q&A; graded per person |
 | Code & docs | 3% | TBD | Reasonably documented code |
@@ -140,8 +140,6 @@ Four parts of roughly equal effort. Parts 2 and 3 can run fully in parallel once
 | Mon 12/7 | **Freeze results.** Full paper draft; dry-run presentation (time it) | all |
 | Week 15 (12/8 – 12/10) | Present; final paper + code submission (confirm exact date with Dr. Derr) | all |
 
-**Ask Dr. Derr (one email, this week):** the exact paper due date, the presentation date/order, and whether a merged update counts for the missed proposal (his email suggests yes).
-
 ## 6. Risks & fallbacks
 
 | Risk | Fallback |
@@ -153,7 +151,7 @@ Four parts of roughly equal effort. Parts 2 and 3 can run fully in parallel once
 | Part 2 community IDs late for Part 3 | Part 3 runs without the feature first and adds it as an ablation |
 
 ## 7. Definition of done
-- [ ] Update submitted 11/24
+- [x] Update submitted 11/24
 - [ ] Each of RQ1–RQ4 has ≥ 1 table or figure in the paper
 - [ ] Main prediction table: ≥ 4 heuristics + feature model + node2vec + GNN, on the temporal test split
 - [ ] Paper is 6–8 pages in the AAAI format; every figure is referenced in the text
