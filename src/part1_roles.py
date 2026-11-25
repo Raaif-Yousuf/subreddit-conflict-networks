@@ -16,6 +16,7 @@ Metrics per subreddit
 - betweenness: exact, directed, unweighted, normalized (igraph)
 Groups
 - attacker: top N_TOP by neg_out; target: top N_TOP by neg_in; rest: neither.
+  Ties at the cutoff are all kept, so a group can hold slightly more than N_TOP.
   A subreddit in both top lists counts in both groups (overlap is reported); each group
   is tested against `rest`, so the comparison groups never overlap.
 Tests: two-sided Mann-Whitney U, rank-biserial effect size r = 2U / (n1 n2) - 1 (U for the group),
@@ -65,8 +66,8 @@ def node_roles(G: nx.DiGraph) -> pd.DataFrame:
 
 
 def assign_groups(df: pd.DataFrame) -> pd.DataFrame:
-    attackers = set(df["neg_out"].nlargest(N_TOP).index)
-    targets = set(df["neg_in"].nlargest(N_TOP).index)
+    attackers = set(df["neg_out"].nlargest(N_TOP, keep="all").index)
+    targets = set(df["neg_in"].nlargest(N_TOP, keep="all").index)
     df["is_attacker"] = df.index.isin(attackers)
     df["is_target"] = df.index.isin(targets)
     df["is_rest"] = ~(df["is_attacker"] | df["is_target"])
