@@ -1,0 +1,7 @@
+method_a,method_b,ari
+leiden,louvain,0.5856037474709358
+leiden,spectral,0.30528302181418593
+leiden,leiden_all_edges,0.6391227720849745
+louvain,spectral,0.26242156236207803
+louvain,leiden_all_edges,0.6681677560466246
+spectral,leiden_all_edges,0.2873281555476324
