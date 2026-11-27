@@ -1,0 +1,362 @@
+[
+ {
+  "community_id": 0,
+  "label": "General / default subs",
+  "anchor": "askreddit",
+  "size": 1237,
+  "top_by_activity": [
+   "askreddit",
+   "bestof",
+   "todayilearned",
+   "pics",
+   "funny",
+   "videos",
+   "titlegore",
+   "shitredditsays",
+   "shitpost",
+   "circlebroke2"
+  ],
+  "top_by_internal": [
+   "askreddit",
+   "bestof",
+   "pics",
+   "funny",
+   "todayilearned",
+   "videos",
+   "titlegore",
+   "shitredditsays",
+   "switcharoo",
+   "shitpost"
+  ]
+ },
+ {
+  "community_id": 1,
+  "label": "Politics, news & drama",
+  "anchor": "subredditdrama",
+  "size": 1027,
+  "top_by_activity": [
+   "subredditdrama",
+   "worldnews",
+   "news",
+   "drama",
+   "conspiracy",
+   "the_donald",
+   "politics",
+   "shitstatistssay",
+   "shitliberalssay",
+   "technology"
+  ],
+  "top_by_internal": [
+   "subredditdrama",
+   "conspiracy",
+   "worldnews",
+   "politics",
+   "the_donald",
+   "news",
+   "sandersforpresident",
+   "shitstatistssay",
+   "anarcho_capitalism",
+   "drama"
+  ]
+ },
+ {
+  "community_id": 2,
+  "label": "Gaming",
+  "anchor": "gaming",
+  "size": 955,
+  "top_by_activity": [
+   "gaming",
+   "leagueoflegends",
+   "pcmasterrace",
+   "dota2",
+   "games",
+   "gamingcirclejerk",
+   "globaloffensive",
+   "smashbros",
+   "hearthstone",
+   "overwatch"
+  ],
+  "top_by_internal": [
+   "leagueoflegends",
+   "gaming",
+   "dota2",
+   "games",
+   "smashbros",
+   "gamingcirclejerk",
+   "globaloffensive",
+   "pcmasterrace",
+   "hearthstone",
+   "destinythegame"
+  ]
+ },
+ {
+  "community_id": 3,
+  "label": "Tech & programming",
+  "anchor": "android",
+  "size": 559,
+  "top_by_activity": [
+   "android",
+   "buildapc",
+   "techsupport",
+   "sysadmin",
+   "programming",
+   "linux",
+   "entrepreneur",
+   "apple",
+   "jailbreak",
+   "programmingcirclejerk"
+  ],
+  "top_by_internal": [
+   "android",
+   "buildapc",
+   "techsupport",
+   "sysadmin",
+   "programming",
+   "linux",
+   "programmingcirclejerk",
+   "jailbreak",
+   "changelog",
+   "apple"
+  ]
+ },
+ {
+  "community_id": 4,
+  "label": "Movies, TV & books",
+  "anchor": "iama",
+  "size": 395,
+  "top_by_activity": [
+   "iama",
+   "movies",
+   "television",
+   "books",
+   "episodehub",
+   "moviescirclejerk",
+   "dailydot",
+   "asoiaf",
+   "writing",
+   "gameofthrones"
+  ],
+  "top_by_internal": [
+   "iama",
+   "television",
+   "episodehub",
+   "books",
+   "movies",
+   "writing",
+   "fantasy",
+   "asoiaf",
+   "moviescirclejerk",
+   "gameofthrones"
+  ]
+ },
+ {
+  "community_id": 5,
+  "label": "Science & drugs",
+  "anchor": "science",
+  "size": 383,
+  "top_by_activity": [
+   "science",
+   "askscience",
+   "drugs",
+   "space",
+   "diy",
+   "collapse",
+   "psychonaut",
+   "math",
+   "marshallbrain",
+   "drugscirclejerk"
+  ],
+  "top_by_internal": [
+   "science",
+   "drugs",
+   "askscience",
+   "psychonaut",
+   "drugscirclejerk",
+   "space",
+   "collapse",
+   "diy",
+   "math",
+   "kerbalspaceprogram"
+  ]
+ },
+ {
+  "community_id": 6,
+  "label": "Advice, relationships & gender",
+  "anchor": "legaladvice",
+  "size": 345,
+  "top_by_activity": [
+   "legaladvice",
+   "relationships",
+   "thebluepill",
+   "personalfinance",
+   "theredpill",
+   "offmychest",
+   "sex",
+   "mgtow",
+   "nofap",
+   "raisedbynarcissists"
+  ],
+  "top_by_internal": [
+   "legaladvice",
+   "relationships",
+   "thebluepill",
+   "personalfinance",
+   "theredpill",
+   "nofap",
+   "raisedbynarcissists",
+   "purplepilldebate",
+   "depression",
+   "relationship_advice"
+  ]
+ },
+ {
+  "community_id": 7,
+  "label": "Religion, philosophy & history",
+  "anchor": "atheism",
+  "size": 260,
+  "top_by_activity": [
+   "atheism",
+   "badphilosophy",
+   "askhistorians",
+   "india",
+   "christianity",
+   "depthhub",
+   "exmormon",
+   "islam",
+   "badhistory",
+   "shitwehraboossay"
+  ],
+  "top_by_internal": [
+   "badphilosophy",
+   "atheism",
+   "askhistorians",
+   "christianity",
+   "india",
+   "exmormon",
+   "islam",
+   "debatereligion",
+   "philosophy",
+   "exmuslim"
+  ]
+ },
+ {
+  "community_id": 8,
+  "label": "Music",
+  "anchor": "music",
+  "size": 246,
+  "top_by_activity": [
+   "music",
+   "hiphopheads",
+   "hiphopcirclejerk",
+   "electronicmusic",
+   "edmproduction",
+   "metal",
+   "edmprodcirclejerk",
+   "guitar",
+   "kanye",
+   "metaljerk"
+  ],
+  "top_by_internal": [
+   "music",
+   "hiphopheads",
+   "electronicmusic",
+   "edmproduction",
+   "edmprodcirclejerk",
+   "hiphopcirclejerk",
+   "metal",
+   "guitar",
+   "metaljerk",
+   "metalcore"
+  ]
+ },
+ {
+  "community_id": 9,
+  "label": "Fiction & anime",
+  "anchor": "writingprompts",
+  "size": 243,
+  "top_by_activity": [
+   "writingprompts",
+   "anime",
+   "nosleep",
+   "whowouldwin",
+   "hfy",
+   "manga",
+   "onepiece",
+   "nosleepooc",
+   "respectthreads",
+   "yugioh"
+  ],
+  "top_by_internal": [
+   "writingprompts",
+   "anime",
+   "nosleep",
+   "nosleepooc",
+   "hfy",
+   "whowouldwin",
+   "manga",
+   "onepiece",
+   "soledsnak",
+   "iia"
+  ]
+ },
+ {
+  "community_id": 10,
+  "label": "Sports",
+  "anchor": "nfl",
+  "size": 226,
+  "top_by_activity": [
+   "nfl",
+   "nba",
+   "baseball",
+   "cfb",
+   "collegebasketball",
+   "nfl_draft",
+   "greenbaypackers",
+   "oaklandraiders",
+   "chibears",
+   "seahawks"
+  ],
+  "top_by_internal": [
+   "nfl",
+   "nba",
+   "baseball",
+   "cfb",
+   "nfl_draft",
+   "oaklandraiders",
+   "texans",
+   "chibears",
+   "browns",
+   "greenbaypackers"
+  ]
+ },
+ {
+  "community_id": 11,
+  "label": "Cryptocurrency",
+  "anchor": "bitcoin",
+  "size": 222,
+  "top_by_activity": [
+   "bitcoin",
+   "dogecoin",
+   "buttcoin",
+   "darknetmarkets",
+   "btc",
+   "ethereum",
+   "cryptocurrency",
+   "formula1",
+   "bitcoinmarkets",
+   "subreddit_stats"
+  ],
+  "top_by_internal": [
+   "dogecoin",
+   "bitcoin",
+   "darknetmarkets",
+   "buttcoin",
+   "btc",
+   "ethereum",
+   "cryptocurrency",
+   "bitcoinmarkets",
+   "litecoin",
+   "ethtrader"
+  ]
+ }
+]

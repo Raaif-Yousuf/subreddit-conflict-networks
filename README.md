@@ -22,6 +22,9 @@ python src/download.py
 | 3. Link-prediction baselines | `python baselines.py` | `results/prelim_baselines.csv` |
 | 4. Part 1 descriptive stats (#8) | `python part1_descriptive.py` | `results/part1_descriptive.csv` |
 | 5. Part 1 roles, RQ2 (#9) | `python part1_roles.py` | `results/part1_node_roles.csv`, `results/part1_roles_tests.csv`, `figures/part1_roles.*` |
+| 6. Part 2 communities (#13) | `python part2_communities.py` | `results/part2_node_community.csv` (Leiden, for Part 3), `results/part2_memberships.csv`, `results/part2_communities.csv`, `figures/part2_community_sizes.*` |
+| 7. Part 2 community labels (#14) | `python part2_labels.py` | `results/part2_community_labels.json` |
+| 8. Part 2 polarization, RQ1 (#15) | `python part2_polarization.py` | `results/part2_polarization.csv`, `results/part2_hostility_matrix.csv`, `figures/part2_hostility.*` |
 
 `src/load.py` has the shared loaders: `load_edges`, `load_graph` (date range or `window="2016Q3"`), `load_snapshot`, `list_snapshots`, `load_core_nodes`, `aggregate`, and `to_undirected_signed` (one sign per pair, for triads and community detection).
 
