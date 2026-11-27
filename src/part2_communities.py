@@ -26,6 +26,9 @@ Methods
   the sweep over SPECTRAL_K is in part2_communities.csv (rows "spectral_k=..."). Its modularity rises slowly
   with k (0.35 at k=10, ~0.40 from k=40 on), so k matters less than the method.
 Community ids are relabeled by size: 0 is the largest community of each method.
+Stability caveat: Leiden runs with other seeds reach the same modularity (0.497-0.499) but agree with the seed-42
+partition only at ARI 0.61-0.81 (part2_leiden_seeds.csv): the big blocks are stable, the borders between them are
+not. part2_polarization.py repeats the RQ1 test on every seed's partition (part2_polarization_seeds.csv).
 Modularity is always the weighted Newman modularity of the partition on the graph the method ran on.
 """
 import random
@@ -158,7 +161,7 @@ def main() -> None:
     rows.append(summarize("louvain", g_pos, memb["louvain"], "positive"))
 
     for k in SPECTRAL_K:
-        r = summarize(f"spectral_k={k}", g_pos, spectral(g_pos, k), "positive")
+        r = summarize(f"spectral_k={k}", g_pos, spectral(g_pos, k), "positive") | {"spectral_k": k}
         rows.append(r)
         print(f"spectral k={k}: Q={r['modularity']:.3f}")
     k_main = int(memb["leiden"].max() + 1)

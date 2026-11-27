@@ -24,18 +24,18 @@ TOP = 10
 
 # anchor subreddit -> community name
 ANCHORS = {
-    "askreddit": "General / default subs",
+    "askreddit": "Default & meta subs",  # also titlegore, shitredditsays, circlebroke2
     "subredditdrama": "Politics, news & drama",
     "gaming": "Gaming",
     "android": "Tech & programming",
     "iama": "Movies, TV & books",
-    "science": "Science & drugs",
+    "science": "Science, drugs & hobbies",  # also space, diy, collapse, math
     "legaladvice": "Advice, relationships & gender",
     "atheism": "Religion, philosophy & history",
     "music": "Music",
     "writingprompts": "Fiction & anime",
     "nfl": "Sports",
-    "bitcoin": "Cryptocurrency",
+    "bitcoin": "Cryptocurrency",  # plus a few strays (e.g. formula1)
 }
 
 

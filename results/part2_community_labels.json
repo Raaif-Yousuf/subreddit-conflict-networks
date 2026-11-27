@@ -1,7 +1,7 @@
 [
  {
   "community_id": 0,
-  "label": "General / default subs",
+  "label": "Default & meta subs",
   "anchor": "askreddit",
   "size": 1237,
   "top_by_activity": [
@@ -151,7 +151,7 @@
  },
  {
   "community_id": 5,
-  "label": "Science & drugs",
+  "label": "Science, drugs & hobbies",
   "anchor": "science",
   "size": 383,
   "top_by_activity": [
